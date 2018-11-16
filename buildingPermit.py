@@ -39,7 +39,10 @@ results_df.to_csv('working/BuildingPermit.csv', index=None)
 results_df['Coordinates'] = list(zip(results_df['Lng'], results_df['Lat']))
 results_df['Coordinates'] = results_df['Coordinates'].apply(Point)
 gdf = geopandas.GeoDataFrame(results_df, geometry='Coordinates')
-
+BIZ_b = geopandas.read_file('BIZ_Boundary.geojson')
+BIZ_b = BIZ_b.append([BIZ_b]*(gdf.shape[0]-1), ignore_index=True)
+gdf['BIZ'] = gdf.within(BIZ_b)
+gdf['BIZ'] = gdf['BIZ'].apply(lambda x: 'Yes' if x == True else 'No')
 schema = geopandas.io.file.infer_schema(gdf)
 
 schema['properties']['permit_expire'] = 'datetime'

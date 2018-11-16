@@ -1,9 +1,23 @@
 # Building Permit download
 
+## Data Portal Documentation
+
+https://dev.socrata.com/foundry/data.detroitmi.gov/but4-ky7y
+
+## Install
+
+Open anaconda Prompt
+
+```
+pip install sodapy pandas
+conda install -c conda-forge geopandas
+```
+
 ## Run
 
 ```
-cd ddp-building-permit
-pip3 install sodapy geopandas pandas
-python3 buildingPermit.py
+cd PATH
+python buildingPermit.py
 ```
+
+The shapefile will be saved under `working/buildingPermit`
