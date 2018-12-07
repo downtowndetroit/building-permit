@@ -9,7 +9,8 @@ https://dev.socrata.com/foundry/data.detroitmi.gov/but4-ky7y
 Open anaconda Prompt
 
 ```
-pip install sodapy pandas
+conda install sodapy pandas
+
 conda install -c conda-forge geopandas
 ```
 
